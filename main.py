@@ -7,7 +7,7 @@ for k,v in inpins.items():
 
 import os, sys
 fd = open("/dev/hidg0", "rb+")
-bytesWritten = os.write(fd, bytes([252, 8]))
+bytesWritten = write(fd, bytes([252, 8]))
 print('bytes written: ' + str(bytesWritten))
 while True:
     for k,v in inpins.items():
