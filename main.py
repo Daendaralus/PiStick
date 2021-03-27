@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 NULL_CHAR = chr(0)
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
 inpins = {17:"a"}
 for k,v in inpins.items():
     GPIO.setup(k, GPIO.IN, GPIO.PUD_UP)
