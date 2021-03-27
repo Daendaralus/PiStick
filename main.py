@@ -6,7 +6,7 @@ for k,v in inpins.items():
     GPIO.setup(k, GPIO.IN, GPIO.PUD_UP)
 
 import os, sys
-fd = os.open("/dev/hidg0", "rb+")
+fd = open("/dev/hidg0", "rb+")
 bytesWritten = os.write(fd, bytes([252, 8]))
 print('bytes written: ' + str(bytesWritten))
 while True:
