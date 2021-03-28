@@ -36,7 +36,7 @@ while True:
             if not v[1]:
                 state |= v[0]
                 #submit_action(v[0])
-                v[1] = True
+                # v[1] = True
             time.sleep(0.01)
         else:
             v[1] = False
