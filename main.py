@@ -15,10 +15,10 @@ while True:
     for k,v in inpins.items():
         if not GPIO.input(k): #Key is down
             if not v[1]:
-                submit_action(v.encode())
+                submit_action(v
                 v[1] = True
             time.sleep(0.01)
             
         else:
             v[1] = False
-            submit_action('\x00\x00\x00\x00'.encode())
+            submit_action('\x00\x00\x00\x00')
