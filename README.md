@@ -1,5 +1,6 @@
 # PiStick
-Raspberry Pi Zero based fighting stick thingy
+Raspberry Pi Zero based fighting stick thingy/keybox clone.
+Using 14 MX Cherry Speed Silver switches, a CNC routed case out of plywood and 3d printed keycaps. 
 
 Inspired by https://github.com/milador/RaspberryPi-Joystick
 
