@@ -1,5 +1,4 @@
 import RPi.GPIO as GPIO
-NULL_CHAR = chr(0)
 GPIO.setmode(GPIO.BCM)
 inpins = {
      2:['\x00\x00\x01\x00',False] # Button 1
@@ -31,13 +30,18 @@ def submit_action(action):
 
 while True:
     state = 0
+    sendclean = True
     for k,v in inpins.items():
         if not GPIO.input(k): #Key is down
             if not v[1]:
                 state |= v[0]
                 #submit_action(v[0])
-                # v[1] = True
+                v[1] = True
+            sendclean = False
             time.sleep(0.01)
         else:
             v[1] = False
-    submit_action(state.to_bytes(4, 'big'))
+    if sendclean:
+        submit_action((0).to_bytes(4, 'big'))
+    elif state!=0:
+        submit_action(state.to_bytes(4, 'big'))
