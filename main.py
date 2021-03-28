@@ -27,7 +27,7 @@ import os, sys, time
 
 def submit_action(action):
     with open('/dev/hidg0', 'rb+') as fd:
-        fd.write(action.encode())
+        fd.write(action)
 
 while True:
     state = 0
