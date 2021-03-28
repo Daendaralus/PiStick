@@ -6,12 +6,14 @@ for k,v in inpins.items():
     GPIO.setup(k, GPIO.IN, GPIO.PUD_UP)
 
 import os, sys, time
-fd = open("/dev/hidg0", "rb+")
+
+def submit_action(action):
+    with open('/dev/hidg0', 'rb+') as fd:
+        fd.write(action.encode())
 
 while True:
     for k,v in inpins.items():
         if not GPIO.input(17):
-            fd.write(v.encode())
+            submit_action(v.encode())
             time.sleep(0.05)
-            fd.write('\x00\x00\x00\x00'.encode())
-            fd.flush()
+            submit_action('\x00\x00\x00\x00'.encode())
