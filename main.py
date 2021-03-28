@@ -15,7 +15,7 @@ while True:
     for k,v in inpins.items():
         if not GPIO.input(k): #Key is down
             if not v[1]:
-                submit_action(v
+                submit_action(v)
                 v[1] = True
             time.sleep(0.01)
             
