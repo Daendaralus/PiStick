@@ -41,7 +41,7 @@ while True:
             time.sleep(0.01)
         else:
             v[1] = False
-    if sendclean:
-        submit_action((0).to_bytes(4, 'big'))
-    elif state!=0:
+    if state!= 0 or sendclean:
         submit_action(state.to_bytes(4, 'big'))
+    # elif state!=0:
+    #     submit_action(state.to_bytes(4, 'big'))
