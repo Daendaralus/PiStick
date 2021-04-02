@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+print("starting")
 GPIO.setmode(GPIO.BCM)
 # inpins = {
 #      2:['\x00\x00\x01\x00',False] # Button 1
