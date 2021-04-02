@@ -19,8 +19,11 @@ inpins = {
     ,14:['\x00\x00\x00\x80',False]}# Button 16 -> triggers 2,7,8,16
 
 for k,v in inpins.items():
+    inpins[k][0] = int.from_bytes(v[0].encode(), 'big')
     GPIO.setup(k, GPIO.IN, GPIO.PUD_UP)
-    v[0] = int.from_bytes(v[0].encode(), 'big')
+
+
+print(inpins)
 
 import os, sys, time
 
@@ -30,6 +33,7 @@ def submit_action(action):
 state = 0
 while True:    
     sendclean = True
+    old_state = state
     for k,v in inpins.items():
         if not GPIO.input(k): #Key is down
             if not v[1]:
@@ -37,11 +41,13 @@ while True:
                 #submit_action(v[0])
                 print(state, " | ", hex(state))
                 v[1] = True
+                
             sendclean = False
             time.sleep(0.01)
         else:
             v[1] = False
-    if state!= 0 or sendclean:
+            state &= v[0]^(2**16)
+    if old_state!=state:
         submit_action(state.to_bytes(4, 'big'))
     # elif state!=0:
     #     submit_action(state.to_bytes(4, 'big'))
