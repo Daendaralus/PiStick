@@ -67,7 +67,7 @@ while True:
             if v[1]:
                 print(state, " | ", hex(state))
             v[1] = False
-            state &= v[0]^(2**16)
+            state &= ~v[0]
             
     if old_state!=state:
         print("{0:b}".format(state),  hex(state))
