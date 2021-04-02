@@ -46,6 +46,7 @@ print(inpins)
 import os, sys, time
 
 def submit_action(action):
+    print("sending action:", action)
     with open('/dev/hidg0', 'rb+') as fd:
         fd.write(action)
 state = 0
