@@ -65,6 +65,6 @@ while True:
             v[1] = False
             state &= v[0]^(2**16)
     if old_state!=state:
-        submit_action(state.to_bytes(2, 'big'))
+        submit_action(state.to_bytes(4, 'big'))
     # elif state!=0:
     #     submit_action(state.to_bytes(4, 'big'))
