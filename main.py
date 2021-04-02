@@ -63,9 +63,11 @@ while True:
                 keys_prs.append(k)
             sendclean = False
         else:
+            if v[1]:
+                print(state, " | ", hex(state))
             v[1] = False
             state &= v[0]^(2**16)
-            print(state, " | ", hex(state))
+            
     if old_state!=state:
         print("{0:b}".format(state),  hex(state))
         submit_action(state.to_bytes(4, 'big'))
