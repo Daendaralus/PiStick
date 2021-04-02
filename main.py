@@ -59,7 +59,7 @@ while True:
             if not v[1]:
                 state |= v[0]
                 #submit_action(v[0])
-                print(state, " | ", hex(state))
+                print(state, old_state, " | ", hex(state))
                 v[1] = True
                 keys_prs.append(k)
             sendclean = False
