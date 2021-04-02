@@ -62,10 +62,10 @@ while True:
                 v[1] = True
                 keys_prs.append(k)
             sendclean = False
-            time.sleep(0.01)
         else:
             v[1] = False
             state &= v[0]^(2**16)
+            print(state, " | ", hex(state))
     if old_state!=state:
         print("{0:b}".format(state),  hex(state))
         submit_action(state.to_bytes(4, 'big'))
