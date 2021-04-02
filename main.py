@@ -37,7 +37,7 @@ inpins = {
     ,14:[16,False]}# Button 16 -> triggers 2,7,8,16
 
 for k,v in inpins.items():
-    inpins[k][0] = 1<<v[0]#int.from_bytes(v[0].encode(), 'big')
+    inpins[k][0] = 1<<(v[0]-1)#int.from_bytes(v[0].encode(), 'big')
     GPIO.setup(k, GPIO.IN, GPIO.PUD_UP)
 
 
