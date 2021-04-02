@@ -60,7 +60,7 @@ while True:
                 #submit_action(v[0])
                 print(state, " | ", hex(state))
                 v[1] = True
-                keys_prs+=k
+                keys_prs.append(k)
             sendclean = False
             time.sleep(0.01)
         else:
