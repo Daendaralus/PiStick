@@ -52,6 +52,7 @@ state = 0
 while True:    
     sendclean = True
     old_state = state
+    keys_prs = []
     for k,v in inpins.items():
         if not GPIO.input(k): #Key is down
             if not v[1]:
@@ -59,7 +60,7 @@ while True:
                 #submit_action(v[0])
                 print(state, " | ", hex(state))
                 v[1] = True
-                
+                keys_prs+=k
             sendclean = False
             time.sleep(0.01)
         else:
@@ -67,5 +68,6 @@ while True:
             state &= v[0]^(2**16)
     if old_state!=state:
         submit_action(state.to_bytes(4, 'big'))
+        print (keys_prs)
     # elif state!=0:
     #     submit_action(state.to_bytes(4, 'big'))
