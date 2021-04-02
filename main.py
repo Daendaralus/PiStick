@@ -67,7 +67,7 @@ while True:
             v[1] = False
             state &= v[0]^(2**16)
     if old_state!=state:
-        print(state, " | ", hex(state))
+        print("{0:b}".format(state),  hex(state))
         submit_action(state.to_bytes(4, 'big'))
         print (keys_prs)
     # elif state!=0:
